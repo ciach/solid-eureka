@@ -1,0 +1,14 @@
+{
+  "devDependencies": {
+    "cypress": "^13.10.0",
+    "start-server-and-test": "^2.0.3"
+  },
+  "scripts": {
+    "cypress:open": "cypress open",
+    "cypress:run": "start-server-and-test 'node start-docker.js' http://127.0.0.1:8090 'npm run cypress:run:tests'",
+    "cypress:run:tests": "cypress run",
+    "cypress:run:ci": "start-server-and-test 'node start-docker.js' http://127.0.0.1:8090 'npm run cypress:run:tests' && node stop-docker.js",
+    "start-docker": "node start-docker.js",
+    "stop-docker": "node stop-docker.js"
+  }
+}

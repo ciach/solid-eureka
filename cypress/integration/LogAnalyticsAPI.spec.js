@@ -110,4 +110,13 @@ describe('Log Analytics API Tests', () => {
       expect(response.body.counter).to.eq(0);
     });
   });
+
+  it('should get 400 when trying to truncate with a bad parameter', () => {
+    const params = {
+      badParam: 'invalid',
+    };
+    makeRequestAndCheckResponse('DELETE', `${baseUrl}/truncate`, params, 400, (response) => {
+      expect(response.body).to.have.property('title').that.includes('Bad input parameter.');
+    });
+  });
 });
